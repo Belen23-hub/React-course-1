@@ -1,17 +1,35 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import './index.css'
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+const firstBook = {
+  img: "https://m.media-amazon.com/images/I/71hKtvn3gXL._AC_UY218_.jpg",
+  title:'The Guardians: A Novel',
+  author: 'John Grisham',
+}
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+const secondBook = {
+  img: "https://m.media-amazon.com/images/I/81XvmM2fYJL._AC_UY218_.jpg",
+  title:'Squeeze me: A Novel',
+  author: 'Carl Hiaasen',
+}
+function Booklist () {
+  return (
+    <section className="booklist">
+    <Book img={firstBook.img} title={firstBook.title} author={firstBook.author}/>
+    <Book img={secondBook.img} title={secondBook.title} author={secondBook.author}/>
+    </section>
+  );
+}
+
+const Book = (props) => {
+  return (
+    <article className="book">
+    <img src={props.img} alt=''/>
+    <h1>{props.title}</h1>
+    <h4>{props.author}</h4>
+  </article>
+  )
+}
+
+ReactDOM.render(<Booklist />, document.getElementById('root'));
